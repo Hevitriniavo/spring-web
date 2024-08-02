@@ -1,12 +1,14 @@
-FROM gradle:7.3.0-jdk11 AS build
+FROM gradle:8.0.2-jdk17 AS build
 
 WORKDIR /app
 
 COPY . /app
 
+RUN chmod +x gradlew
+
 RUN ./gradlew clean build -x test
 
-FROM openjdk:11-jre-slim-buster
+FROM openjdk:17-jre-slim
 
 EXPOSE 8080
 
