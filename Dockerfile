@@ -8,8 +8,7 @@ RUN chmod +x gradlew
 
 RUN ./gradlew clean build -x test
 
-FROM openjdk:17-jre-slim
-
+FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 COPY --from=build /app/build/libs/spring-web-0.0.1-SNAPSHOT.jar /app/spring-web-0.0.1-SNAPSHOT.jar
