@@ -1,25 +1,11 @@
-FROM ubuntu:latest AS build
+FROM gradle:8.0.2-jdk17 AS build
+COPY . .
 
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk gradle
-
-WORKDIR /app
-
-COPY build.gradle settings.gradle gradlew /app/
-COPY gradle /app/gradle
-COPY src /app/src
-
-RUN chmod +x gradlew
-
-RUN ./gradlew bootJar --no-daemon
+RUN gradle build --no-daemon -x test
 
 FROM openjdk:17-jdk-slim
 
-WORKDIR /app
-
 COPY --from=build /app/build/libs/spring-web-1.jar app.jar
-
-COPY src/main/resources/application.properties /app/application.properties
 
 EXPOSE 8080
 
