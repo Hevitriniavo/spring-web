@@ -1,6 +1,1 @@
-spring_profiles_active=prod
-PROD_DB_HOST=aws-0-ap-southeast-1.pooler.supabase.com
-PROD_DB_PORT=6543
-PROD_DB_NAME=postgres
-PROD_DB_PASSWORD=7jORrM4K2ygbECkd
-PROD_DB_USERNAME=postgres.bgsizjwzwjubtnvtrssk
+Hello world !
